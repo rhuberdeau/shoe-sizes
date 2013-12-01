@@ -1,0 +1,9 @@
+<section>
+<%= friend.name %> <%= friend.age %> Shoe Size <%= friend.shoe.size unless friend.shoe.nil? %> 
+
+																																			 <%= link_to 'Show', friend %> |
+																																			 <%= link_to 'Edit', edit_friend_path(friend) %> |
+																																			 <%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' }, 			
+																																			             remote: true, class: 'delete_friend' %>
+</section>
+<br />
