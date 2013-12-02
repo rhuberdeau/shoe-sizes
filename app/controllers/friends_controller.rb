@@ -5,6 +5,7 @@ class FriendsController < ApplicationController
   # GET /friends.json
   def index
     @friends = Friend.all
+    @friend = Friend.new
   end
 
   # GET /friends/1
@@ -30,9 +31,11 @@ class FriendsController < ApplicationController
       if @friend.save
         format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
         format.json { render action: 'show', status: :created, location: @friend }
+        format.js   { render layout: false, notice: 'Friend was successfully created.' }
       else
         format.html { render action: 'new' }
         format.json { render json: @friend.errors, status: :unprocessable_entity }
+        format.js   { render layout: false }
       end
     end
   end
