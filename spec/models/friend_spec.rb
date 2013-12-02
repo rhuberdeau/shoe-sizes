@@ -19,4 +19,14 @@ describe Friend do
     before { @friend.age = ""}
     it { should_not be_valid}
   end
+  
+  describe "age must be a number" do
+    before { @friend.age = "aaa"}
+    it { should_not be_valid }
+  end
+  
+  describe "when age is less than zero" do
+    before { @friend.age = "-1" }
+    it { should_not be_valid }
+  end
 end

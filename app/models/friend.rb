@@ -3,7 +3,8 @@ class Friend < ActiveRecord::Base
             presence: true
             
   validates :age,
-            presence: true
+            presence: true,
+            numericality: { greater_than: 0 }
             
   has_one :shoe
 end
