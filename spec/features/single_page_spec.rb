@@ -1,9 +1,8 @@
 require 'spec_helper'
 
 feature 'Friends Index' do
-  self.use_transactional_fixtures = false
   
-  before { 10.times { FactoryGirl.create(:friend) } }
+  # before { 10.times { FactoryGirl.create(:friend) } }
  
   
   scenario 'should not have js errors', js: true do
@@ -12,12 +11,12 @@ feature 'Friends Index' do
   end
   
   scenario "lets users delete friends", :js => true do
-     10.times { FactoryGirl.create(:friend) }
+     FactoryGirl.create(:friend, name: "Ted")
      visit friends_path
-     expect(page).to have_content("Person1")
-     page.find("section", text: "Person1").find(".delete_friend").click
+     expect(page).to have_content("Ted")
+     page.find("section", text: "Ted").find(".delete_friend").click
      page.evaluate_script('window.confirm = function() { return true; }')
-     expect(page).to_not have_content("Person1")
+     expect(page).to_not have_content("Ted")
    end
   
   scenario "lets users create new friend entries", js: true do

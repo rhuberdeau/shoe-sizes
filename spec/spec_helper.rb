@@ -6,6 +6,7 @@ require 'rspec/autorun'
 require 'capybara/rspec'
 require 'capybara/webkit/matchers'
 require 'database_cleaner'
+require 'factory_girl_rails'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -40,6 +41,14 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+  end
+  
+  config.before type: :feature do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.after type: :feature  do
+    DatabaseCleaner.strategy = :transaction
   end
 
   config.before(:each) do
