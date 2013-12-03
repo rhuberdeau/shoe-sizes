@@ -7,4 +7,5 @@ class Friend < ActiveRecord::Base
             numericality: { greater_than: 0 }
             
   has_one :shoe
+  accepts_nested_attributes_for :shoe
 end
