@@ -1,0 +1,4 @@
+$('.edit_friend').bind('ajax:success', function(){
+  $("#friend_<%= @friend.id%>").html('');
+  $("#friend_<%= @friend.id%>").append("<%= j(render(partial: @friend))%>");
+});

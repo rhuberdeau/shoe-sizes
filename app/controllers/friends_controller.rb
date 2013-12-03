@@ -47,6 +47,7 @@ class FriendsController < ApplicationController
       if @friend.update(friend_params)
         format.html { redirect_to @friend, notice: 'Friend was successfully updated.' }
         format.json { head :no_content }
+        format.js   { render layout: false, notice: 'Friend was successfully created.' }
       else
         format.html { render action: 'edit' }
         format.json { render json: @friend.errors, status: :unprocessable_entity }

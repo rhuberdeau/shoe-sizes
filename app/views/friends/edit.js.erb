@@ -1,0 +1,4 @@
+// $('#friend_form').html('');
+// $('#friend_form').append("<%= j(render(:partial => 'form')) %>");
+$("#friend_<%= @friend.id%>").html('');
+$("#friend_<%= @friend.id%>").append("<%= j(render(partial: 'inline', object: @friend))%>");
