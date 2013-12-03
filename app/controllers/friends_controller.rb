@@ -26,12 +26,12 @@ class FriendsController < ApplicationController
   # POST /friends.json
   def create
     @friend = Friend.new(friend_params)
-
+    flash[:notice] = "Friend was successfully created."
     respond_to do |format|
       if @friend.save
         format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
         format.json { render action: 'show', status: :created, location: @friend }
-        format.js   { render layout: false, notice: 'Friend was successfully created.' }
+        format.js   { render layout: false }
       else
         format.html { render action: 'new' }
         format.json { render json: @friend.errors, status: :unprocessable_entity }
@@ -45,9 +45,10 @@ class FriendsController < ApplicationController
   def update
     respond_to do |format|
       if @friend.update(friend_params)
+        flash[:notice] = 'Friend was successfully updated.'
         format.html { redirect_to @friend, notice: 'Friend was successfully updated.' }
         format.json { head :no_content }
-        format.js   { render layout: false, notice: 'Friend was successfully created.' }
+        format.js   { render layout: false }
       else
         format.html { render action: 'edit' }
         format.json { render json: @friend.errors, status: :unprocessable_entity }
@@ -59,6 +60,7 @@ class FriendsController < ApplicationController
   # DELETE /friends/1.json
   def destroy
     @friend.destroy
+    flash[:notice] = "Friend was successfully deleted"
     respond_to do |format|
       format.html { redirect_to friends_url }
       format.json { head :no_content }

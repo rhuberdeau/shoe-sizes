@@ -1,2 +1,3 @@
+$("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>");
 $("#friends").append("<%= j(render(:partial => @friend)) %>");
 $("#new_friend")[0].reset();

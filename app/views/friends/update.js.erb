@@ -1,4 +1,5 @@
 $('.edit_friend').bind('ajax:success', function(){
   $("#friend_<%= @friend.id%>").html('');
   $("#friend_<%= @friend.id%>").append("<%= j(render(partial: @friend))%>");
+  $("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>");
 });

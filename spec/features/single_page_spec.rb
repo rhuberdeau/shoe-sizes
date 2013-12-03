@@ -9,32 +9,38 @@ feature 'Friends Index' do
     expect(page).not_to have_errors
   end
   
-  scenario "lets users delete friends", :js => true do
-     FactoryGirl.create(:friend, name: "Ted")
-     visit friends_path
-     expect(page).to have_content("Ted")
-     page.find("div", text: "Ted").find(".delete_friend").click
-     page.evaluate_script('window.confirm = function() { return true; }')
-     expect(page).to_not have_content("Ted")
-   end
+  context "when deleting a friend" do
+    before { FactoryGirl.create(:friend, name: "Tod", age: "30")}
+    
+    scenario "lets users delete friends", :js => true do
+       visit friends_path
+       expect(page).to have_content("Tod")
+       find("div", text: "Tod").find(".delete_friend").click
+       evaluate_script('window.confirm = function() { return true; }')
+       expect(page).to_not have_content("Tod")
+       expect(page).to have_content("Friend was successfully deleted")
+     end
+  end
   
   scenario "lets users create new friend entries", js: true do
     visit friends_path
-    page.fill_in "friend_name", with: "Steve"
-    page.fill_in "friend_age", with: "44"
-    page.click_button "Save"
+    fill_in "friend_name", with: "Steve"
+    fill_in "friend_age", with: "44"
+    click_button "Save"
     sleep 2
     expect(page).to have_selector('div', text: 'Steve')
+    expect(page).to have_content("Friend was successfully created.")
   end
   
   scenario "lets users edit friend entries", js: true do
-    FactoryGirl.create(:friend, name: "Bob", age: "30")
+    FactoryGirl.create(:friend, name: "Bill", age: "30")
     visit friends_path
-    expect(page).to have_content("Bob")
-    page.find("div", text: "Bob").find(".edit_friend").click
-    page.fill_in "friend[age]", with: "50"
-    page.click_button "Update Friend"
+    expect(page).to have_content("Bill")
+    find("div", text: "Bill").find(".edit_friend").click
+    fill_in "friend[age]", with: "50"
+    click_button "Update Friend"
     sleep 1
     expect(page).to have_selector('div', text: '50')
+    expect(page).to have_content("Friend was successfully updated.")
   end
 end
