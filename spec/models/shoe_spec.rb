@@ -22,4 +22,11 @@ describe Shoe do
     before { @shoe.size = "" }
     it { should_not be_valid }
   end
+  
+  describe ".highest" do
+    before { FactoryGirl.create(:shoe, size: 20) } 
+    it 'should return the highest shoe size' do
+      expect(Shoe.highest).to eql(20)
+    end
+  end
 end
