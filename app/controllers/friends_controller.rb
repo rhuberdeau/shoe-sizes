@@ -4,7 +4,7 @@ class FriendsController < ApplicationController
   # GET /friends
   # GET /friends.json
   def index
-    @friends = Friend.all
+    @friends = Friend.includes(:shoe)
     @friend = Friend.new
     @friend.build_shoe
   end
