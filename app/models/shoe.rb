@@ -8,4 +8,8 @@ class Shoe < ActiveRecord::Base
   def self.highest
     self.maximum("size")
   end
+  
+  def self.lowest
+    self.minimum("size")
+  end
 end
