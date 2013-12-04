@@ -42,4 +42,21 @@ describe Shoe do
       expect(Shoe.average_size).to eql(Shoe.average("size"))
     end
   end
+  
+  describe "frequence_of_size" do
+    before do
+      FactoryGirl.create(:shoe, size: 12)
+      FactoryGirl.create(:shoe, size: 12)
+      FactoryGirl.create(:shoe, size: 12)
+      FactoryGirl.create(:shoe, size: 1)
+      FactoryGirl.create(:shoe, size: 5)
+      FactoryGirl.create(:shoe, size: 5)
+    end
+    it "should return the frequence of each shoe size" do
+      shoe_frequency = Shoe.frequency_of_size
+      expect(shoe_frequency[5]).to eql(2)
+      expect(shoe_frequency[1]).to eql(1)
+      expect(shoe_frequency[12]).to eql(3)
+    end
+  end
 end

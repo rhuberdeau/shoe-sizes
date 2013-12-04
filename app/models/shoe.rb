@@ -16,4 +16,8 @@ class Shoe < ActiveRecord::Base
   def self.average_size
     self.average("size")
   end
+  
+  def self.frequency_of_size
+    self.group("size").count
+  end
 end
