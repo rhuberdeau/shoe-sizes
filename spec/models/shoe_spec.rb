@@ -36,4 +36,10 @@ describe Shoe do
       expect(Shoe.lowest).to eql(1)
     end
   end
+  
+  describe "average" do
+    it "should return the average shoe size" do
+      expect(Shoe.average_size).to eql(Shoe.average("size"))
+    end
+  end
 end

@@ -12,4 +12,8 @@ class Shoe < ActiveRecord::Base
   def self.lowest
     self.minimum("size")
   end
+  
+  def self.average_size
+    self.average("size")
+  end
 end
