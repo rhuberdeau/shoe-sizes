@@ -1,5 +1,5 @@
 $('.delete_friend').bind('ajax:success', function() {  
   $("#flash-message").css('display', 'block');
   $(this).closest('div').fadeOut();
-  $("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>").fadeOut(1000);
+  $("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>").fadeOut(2000);
 });

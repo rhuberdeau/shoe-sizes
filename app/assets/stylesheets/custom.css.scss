@@ -1,1 +1,33 @@
 @import "bootstrap";
+
+#container {
+ @extend .container;
+}
+
+#new_friend div {
+ @extend .form-group;
+}
+
+#new_friend div input {
+ @extend .form-control;
+}
+
+button {
+	@extend .btn;
+}
+
+.edit_friend {
+ @extend .form-inline;
+}
+
+.edit_friend div{
+ @extend .form-group
+}
+
+.edit_friend label {
+ @extend .sr-only
+}
+
+.edit_friend div input {
+ @extend .form-control;
+}

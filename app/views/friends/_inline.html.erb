@@ -11,21 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :age %><br>
-    <%= f.number_field :age %>
+  <div>
+    <%= f.label :age %>
+    <%= f.number_field :age, class: "form-control" %>
   </div>
   <%= f.fields_for :shoe do |shoe_form| %>
-     <div class="field">
+     <div>
        <%= shoe_form.label :size %>
-       <%= shoe_form.text_field :size %>
+       <%= shoe_form.text_field :size, class: "form-control" %>
      </div>
    <% end %>
-  <div class="actions">
+  
     <%= f.submit "Update Friend" %>
-  </div>
+
 <% end %>

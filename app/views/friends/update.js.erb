@@ -2,5 +2,5 @@ $('.edit_friend').bind('ajax:success', function(){
   $("#friend_<%= @friend.id%>").html('');
   $("#friend_<%= @friend.id%>").html("<%= j(render(partial: @friend))%>");
   $("#flash-message").css('display', 'block');
-  $("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>").fadeOut(1000);
+  $("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>").fadeOut(2000);
 });
