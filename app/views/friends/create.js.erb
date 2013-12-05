@@ -1,3 +1,4 @@
-$("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>");
+$("#flash-message").css('display', 'block');
+$("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>").fadeOut(1000);
 $("#friends").append("<%= j(render(:partial => @friend)) %>");
 $("#new_friend")[0].reset();
