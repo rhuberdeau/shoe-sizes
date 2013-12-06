@@ -23,16 +23,7 @@ feature 'Friends Index' do
   end
   
   context "creating a friend" do
-    scenario "lets users create new friend entries", js: true do
-      visit friends_path
-      fill_in "friend_name", with: "Steve"
-      fill_in "friend_age", with: "44"
-      click_button "Save"
-      expect(page).to have_selector('div', text: 'Steve')
-      expect(page).to have_content("Friend was successfully created.")
-    end
-  
-    scenario "lets users create friends with shoe sizes", js: true do
+    scenario "with valid friend and shoe size attributes", js: true do
       visit friends_path
       fill_in "friend_name", with: "Alan"
       fill_in "friend_age", with: "29"
@@ -41,6 +32,22 @@ feature 'Friends Index' do
       expect(page).to have_selector('div', text: 'Alan')
       expect(page).to have_selector('div', text: '11')
       expect(page).to have_content("Friend was successfully created.")
+    end
+    
+    scenario "with invalid friend attributes", js: true do
+      visit friends_path
+      fill_in "friend_age", with: "29"
+      fill_in "friend[shoe_attributes][size]", with: "11"
+      click_button "Save"
+      expect(page).to have_content "Name can't be blank"
+    end
+    
+    scenario "without a shoe size", js: true do
+      visit friends_path
+      fill_in "friend_name", with: "Alan"
+      fill_in "friend_age", with: "29"
+      click_button "Save"
+      expect(page).to have_content "Shoe size can't be blank"
     end
   end
   
