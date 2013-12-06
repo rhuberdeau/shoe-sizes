@@ -9,9 +9,9 @@ describe "Friends" do
       expect(response.status).to be(200)
     end
     
-    it "should have a field for shoe" do
+    it "a link for a new friend" do
       visit friends_path
-      expect(page).to have_field "friend[shoe_attributes][size]"
+      expect(page).to have_link "New Friend"
     end
   end
   

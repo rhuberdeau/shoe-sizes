@@ -4,8 +4,16 @@
  @extend .container;
 }
 
+#new_friend {
+ @extend .form-inline;
+}
+
 #new_friend div {
  @extend .form-group;
+}
+
+#new_friend label {
+ @extend .sr-only
 }
 
 #new_friend div input {
@@ -33,6 +41,7 @@ button {
 }
 
 #error_explanation {
+  width: 100%;
   color: #f00;
   ul {
     list-style: none;

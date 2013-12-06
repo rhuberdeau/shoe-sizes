@@ -5,8 +5,6 @@ class FriendsController < ApplicationController
   # GET /friends.json
   def index
     @friends = Friend.includes(:shoe)
-    @friend = Friend.new
-    @friend.build_shoe
   end
   
   # GET /friends/1
@@ -17,6 +15,7 @@ class FriendsController < ApplicationController
   # GET /friends/new
   def new
     @friend = Friend.new
+    @friend.build_shoe
   end
 
   # GET /friends/1/edit
@@ -56,6 +55,7 @@ class FriendsController < ApplicationController
       else
         format.html { render action: 'edit' }
         format.json { render json: @friend.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
