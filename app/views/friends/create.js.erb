@@ -1,4 +1,9 @@
-$("#flash-message").css('display', 'block');
-$("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>").fadeOut(2000);
-$("#friends").append("<%= j(render(:partial => @friend)) %>");
-$("#new_friend")[0].reset();
+<% if @friend.errors.any? %>
+  $('#friend_form').html("<%= j render(partial: 'form') %>");
+<% else %>
+  $('#friend_form').hide();
+  $("#flash-message").css('display', 'block');
+  $("#flash-message").html("<%= escape_javascript(render partial: 'shared/flash_messages') %>").fadeOut(2000);
+  $("#friends").append("<%= j(render(:partial => @friend)) %>");
+  $("#new_friend")[0].reset();
+<% end %>

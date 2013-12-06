@@ -28,7 +28,6 @@ feature 'Friends Index' do
       fill_in "friend_name", with: "Steve"
       fill_in "friend_age", with: "44"
       click_button "Save"
-      sleep 2
       expect(page).to have_selector('div', text: 'Steve')
       expect(page).to have_content("Friend was successfully created.")
     end
@@ -39,7 +38,6 @@ feature 'Friends Index' do
       fill_in "friend_age", with: "29"
       fill_in "friend[shoe_attributes][size]", with: "11"
       click_button "Save"
-      sleep 2
       expect(page).to have_selector('div', text: 'Alan')
       expect(page).to have_selector('div', text: '11')
       expect(page).to have_content("Friend was successfully created.")

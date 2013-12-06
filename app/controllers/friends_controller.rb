@@ -33,7 +33,7 @@ class FriendsController < ApplicationController
     flash[:notice] = "Friend was successfully created."
     respond_to do |format|
       if @friend.save
-        format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
+        format.html { redirect_to @friend }
         format.json { render action: 'show', status: :created, location: @friend }
         format.js   { render layout: false }
       else
