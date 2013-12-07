@@ -65,7 +65,7 @@ feature 'Friends Index' do
       expect(page).to have_content("Bill")
       find("li", text: "Bill").find(".edit_friend").click
       fill_in "friend[age]", with: "50"
-      click_button "Update Friend"
+      click_button "Save"
       sleep 1
       expect(page).to have_selector('li', text: '50')
       expect(page).to have_content("Friend was successfully updated.")
@@ -76,13 +76,22 @@ feature 'Friends Index' do
       visit friends_path
       find("li", text: "Ralph").find(".edit_friend").click
       fill_in "friend[age]", with: ""
-      click_button "Update Friend"
+      click_button "Save"
       expect(page).to have_content "Age can't be blank"
       fill_in "friend[age]", with: "23"
       click_button "Save"
       expect(page).to have_selector("li", text: "23")
       expect(page).to have_link "New Friend"
       expect(page).to_not have_selector "#edit_friend_#{user.id}"
+    end
+  end
+  
+  context "graphs" do
+    scenario "frequency graph", js: true do
+      10.times { FactoryGirl.create(:shoe)}
+      visit friends_path
+      click_link "Graphs"
+      expect(page).to have_selector("g", text: "5")
     end
   end
 end

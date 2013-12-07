@@ -1,12 +1,13 @@
 <h1>Listing friends</h1>
 
-<!-- <%= bar_chart charts_frequency_path %> -->
-
-<%= link_to 'New Friend', new_friend_path, id: "new_link", remote: true %> | <%= link_to 'Show Chart', charts_frequency_path, remote: true %>
+<%= link_to 'New Friend', new_friend_path, id: "new_link", remote: true %>
+<!-- <%= bar_chart Shoe.group("size").count %> -->
 
 <div id="friend_form">
   
 </div>
+
+<div id="graphs"></div>
 
 <ul id="friends">
  <%= render @friends %>
