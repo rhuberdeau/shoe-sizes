@@ -4,10 +4,16 @@
   <title>ShoeSizes</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "chartkick" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<div id="container">
+		<ul class="nav nav-tabs">
+		  <li class="active"><%= link_to "Home", friends_path, remote: true %></li>
+		  <li><%= link_to "Graphs", charts_frequency_path %></li>
+			<li><%= link_to "Home", friends_path, remote: true %>
+		</ul>
 		<div id="flash-message"></div>
 	  <%= yield %>
 	</div>

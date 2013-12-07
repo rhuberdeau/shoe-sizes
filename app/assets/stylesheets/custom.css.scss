@@ -21,6 +21,9 @@
 }
 
 button {
+  color: #333333;
+	background-color: white;
+	border-color: #cccccc;
 	@extend .btn;
 }
 
@@ -52,4 +55,12 @@ button {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+ul#friends {
+ @extend .list-unstyled;
+}
+
+#friend_form {
+ padding-bottom: 20px;
 }

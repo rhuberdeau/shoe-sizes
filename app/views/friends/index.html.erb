@@ -1,6 +1,8 @@
 <h1>Listing friends</h1>
 
-<%= link_to 'New Friend', new_friend_path, id: "new_link", remote: true %><br />
+<!-- <%= bar_chart charts_frequency_path %> -->
+
+<%= link_to 'New Friend', new_friend_path, id: "new_link", remote: true %> | <%= link_to 'Show Chart', charts_frequency_path, remote: true %>
 
 <div id="friend_form">
   

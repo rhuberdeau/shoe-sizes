@@ -29,7 +29,7 @@ class FriendsController < ApplicationController
   # POST /friends.json
   def create
     @friend = Friend.new(friend_params)
-    flash[:notice] = "Friend was successfully created."
+    flash[:success] = "Friend was successfully created."
     respond_to do |format|
       if @friend.save
         format.html { redirect_to @friend }
