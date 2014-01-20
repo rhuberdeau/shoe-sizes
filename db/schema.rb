@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20131130193414) do
     t.integer  "age"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "shoe_id"
   end
 
   create_table "shoes", force: true do |t|
